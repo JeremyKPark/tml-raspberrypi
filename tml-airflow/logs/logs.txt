@@ -12584,3 +12584,4 @@ origin	https://<personal access token hidden>@github.com/JeremyKPark/tml-raspber
 [INFO 2025-02-24_02:31:30] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-534a.py
 [INFO 2025-02-24_02:31:42] Localfile producing DAG in tml_read_LOCALFILE_step_3_kafka_producetotopic_dag-myawesometmlsolution-534a.py
 [INFO 2025-02-24_02:31:46] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-534a.py
+[INFO 2025-02-24_02:31:48] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-534a.py
