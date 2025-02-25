@@ -12589,3 +12589,20 @@ origin	https://<personal access token hidden>@github.com/JeremyKPark/tml-raspber
 [ERROR 2025-02-24_02:32:05] Deploying to Docker in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-534a.py
 [INFO 2025-02-24_02:32:16] {'_links': {'_self': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/', 'builds': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/builds/', 'environmentvariables': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/environmentvariables/', 'notifications': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/notifications/', 'redirects': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/redirects/', 'subprojects': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/subprojects/', 'superproject': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/superproject/', 'sync_versions': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/sync-versions/', 'translations': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/translations/', 'versions': 'https://readthedocs.org/api/v3/projects/myawesometmlsolution-534a/versions/'}, 'created': '2025-02-24T02:32:16.374155Z', 'default_branch': 'master', 'default_version': 'latest', 'external_builds_privacy_level': 'public', 'homepage': 'http://template.readthedocs.io/', 'id': 1140810, 'language': {'code': 'en', 'name': 'English'}, 'modified': '2025-02-24T02:32:16.374173Z', 'name': 'myawesometmlsolution-534a', 'privacy_level': 'public', 'programming_language': {'code': 'py', 'name': 'Python'}, 'repository': {'type': 'git', 'url': 'https://github.com/JeremyKPark/myawesometmlsolution-534a'}, 'single_version': False, 'slug': 'myawesometmlsolution-534a', 'subproject_of': None, 'tags': ['automation', 'sphinx'], 'translation_of': None, 'urls': {'builds': 'https://readthedocs.org/projects/myawesometmlsolution-534a/builds/', 'documentation': 'https://myawesometmlsolution-534a.readthedocs.io/en/latest/', 'downloads': 'https://readthedocs.org/projects/myawesometmlsolution-534a/downloads/', 'home': 'https://readthedocs.org/projects/myawesometmlsolution-534a/', 'versions': 'https://readthedocs.org/projects/myawesometmlsolution-534a/versions/'}, 'users': [{'username': 'JeremyKPark'}], 'versioning_scheme': 'multiple_versions_with_translations'}
 [INFO 2025-02-24_03:13:46] Preprocessing DAG in tml_system_step_4_kafka_preprocess_dag-myawesometmlsolution-534a.py
+[INFO 2025-02-25_06:04:50] TML Solution Studio Started: DOCKERUSERNAME=jeremykpark, GITUSERNAME=JeremyKPark, GITREPOURL=https://github.com/JeremyKPark/tml-raspberrypi.git, AIRFLOWPORT=9000
+[INFO 2025-02-25_06:04:50] TML Solution Studio: Docker Login Status: WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[INFO 2025-02-25_06:04:50] TML Solution Studio: Github Config Status: core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/JeremyKPark/tml-raspberrypi.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/JeremyKPark/tml-raspberrypi.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2025-02-25_06:04:50] TML Solution Studio: Github Remote Status: origin	https://github.com/JeremyKPark/tml-raspberrypi.git (fetch)
+origin	https://<personal access token hidden>@github.com/JeremyKPark/tml-raspberrypi.git (push)
