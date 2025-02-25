@@ -12729,3 +12729,4 @@ origin	https://<personal access token hidden>@github.com/jeremykpark/tml-raspber
 [INFO 2025-02-25_07:35:08] {'name': ['Project with slug "myawesometmlsolution-534a" already exists.']}
 [INFO 2025-02-25_07:37:51] Deleting topic iot-raw-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-534a.py
 [INFO 2025-02-25_07:38:55] Deleting topic iot-preprocess in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-534a.py
+[INFO 2025-02-25_07:39:57] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-534a.py
