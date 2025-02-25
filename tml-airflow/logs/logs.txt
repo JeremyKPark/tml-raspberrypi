@@ -12796,3 +12796,4 @@ origin	https://<personal access token hidden>@github.com/jeremykpark/tml-raspber
 [INFO 2025-02-25_08:12:16] Visualization DAG in tml_system_step_7_kafka_visualization_dag-myawesometmlsolution-534a.py
 [INFO 2025-02-25_08:12:31] Docker DAG in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-534a.py
 [ERROR 2025-02-25_08:12:32] Deploying to Docker in tml_system_step_8_deploy_solution_to_docker_dag-myawesometmlsolution-534a.py
+[INFO 2025-02-25_08:12:44] {'name': ['Project with slug "myawesometmlsolution-534a" already exists.']}
