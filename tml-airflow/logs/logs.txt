@@ -12981,3 +12981,21 @@ branch.main.remote=origin
 branch.main.merge=refs/heads/main
 [INFO 2025-02-28_17:12:20] TML Solution Studio: Github Remote Status: origin	https://github.com/jeremykpark/tml-raspberrypi.git (fetch)
 origin	https://<personal access token hidden>@github.com/jeremykpark/tml-raspberrypi.git (push)
+[INFO 2025-02-28_17:15:56] TML Solution Studio Started: DOCKERUSERNAME=jeremykpark, GITUSERNAME=jeremykpark, GITREPOURL=https://github.com/jeremykpark/tml-raspberrypi.git, AIRFLOWPORT=9000
+[INFO 2025-02-28_17:15:56] TML Solution Studio: Docker Login Status: Get "https://registry-1.docker.io/v2/": unauthorized: your account must log in with a Personal Access Token (PAT) - learn more at docs.docker.com/go/access-tokens
+[INFO 2025-02-28_17:15:56] TML Solution Studio: Github Config Status: user.email=smaurice101@email
+user.name=smaurice101
+safe.directory=/raspberrypitss
+safe.directory=/raspberrypitss
+pull.rebase=true
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/jeremykpark/tml-raspberrypi.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/jeremykpark/tml-raspberrypi.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2025-02-28_17:15:56] TML Solution Studio: Github Remote Status: origin	https://github.com/jeremykpark/tml-raspberrypi.git (fetch)
+origin	https://<personal access token hidden>@github.com/jeremykpark/tml-raspberrypi.git (push)
