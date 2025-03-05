@@ -13353,3 +13353,20 @@ branch.main.remote=origin
 branch.main.merge=refs/heads/main
 [INFO 2025-03-05_07:20:24] TML Solution Studio: Github Remote Status: origin	https://github.com/jeremykpark/tml-raspberrypi.git (fetch)
 origin	https://<personal access token hidden>@github.com/jeremykpark/tml-raspberrypi.git (push)
+[INFO 2025-03-05_07:21:36] TML Solution Studio Started: DOCKERUSERNAME=jeremykpark, GITUSERNAME=jeremykpark, GITREPOURL=https://github.com/jeremykpark/tml-raspberrypi.git, AIRFLOWPORT=9000
+[INFO 2025-03-05_07:21:36] TML Solution Studio: Docker Login Status: Error response from daemon: login attempt to https://index.docker.io/v1/ failed with status: 401 Unauthorized
+[INFO 2025-03-05_07:21:36] TML Solution Studio: Github Config Status: safe.directory=/tml-raspberrypi
+pull.rebase=true
+user.email=jeremykpark@email
+user.name=jeremykpark
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/jeremykpark/tml-raspberrypi.git
+remote.origin.fetch=+refs/heads/main:refs/remotes/origin/main
+remote.origin.pushurl=https://<personal access token hidden>@github.com/jeremykpark/tml-raspberrypi.git
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+[INFO 2025-03-05_07:21:36] TML Solution Studio: Github Remote Status: origin	https://github.com/jeremykpark/tml-raspberrypi.git (fetch)
+origin	https://<personal access token hidden>@github.com/jeremykpark/tml-raspberrypi.git (push)
