@@ -94,7 +94,13 @@ def ingestfiles():
       if len(dirbuf) != len(maintopicbuf):
         tsslogging.locallogs("ERROR", "STEP 3: Produce LOCALFILE in {} You specified multiple doctopics, then must match docfolder".format(os.path.basename(__file__)))
         return
-      while True:
+    elif len(maintopicbuf) == 1 and len(dirbuf) > 1:
+       for i in range(len(dirbuf)-1):
+         maintopicbuf.append(maintopic)
+    else:
+       return
+  
+    while True:
        for dr,tr in zip(dirbuf,maintopicbuf):
          filenames = []
          if os.path.isdir("/rawdata/{}".format(dr)):
@@ -110,24 +116,6 @@ def ingestfiles():
          break
        else:  
         time.sleep(interval)         
-    else:
-     while True:
-      filenames = []
-      for dr in dirbuf:
-        if os.path.isdir("/rawdata/{}".format(dr)):
-          a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
-          os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
-          filenames.extend(a)
-
-      if len(filenames) > 0:
-        with ExitStack() as stack:
-          files = [stack.enter_context(open(i, "rb")) for i in filenames]
-          contents = [readallfiles(file,chunks) for file in files]
-      if interval==0:
-        break
-      else:  
-       time.sleep(interval)
-
       
 def startdirread():
   if 'docfolder' not in default_args and 'doctopic' not in default_args and 'chunks' not in default_args and 'docingestinterval' not in default_args:

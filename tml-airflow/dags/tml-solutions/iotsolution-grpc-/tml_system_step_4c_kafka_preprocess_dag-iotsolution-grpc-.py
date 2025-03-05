@@ -103,6 +103,8 @@ def processtransactiondata():
          rememberpastwindows = default_args['rememberpastwindows']  
          patternscorethreshold = default_args['patternscorethreshold']  
 
+         searchterms = str(base64.b64encode(searchterms.encode('utf-8')))
+
          try:
                 result=maadstml.viperpreprocessrtms(VIPERTOKEN,VIPERHOST,VIPERPORT,topic,producerid,offset,maxrows,enabletls,delay,brokerhost,
                                                   brokerport,microserviceid,topicid,rtmsstream,searchterms,rememberpastwindows,identifier,
@@ -117,9 +119,104 @@ def windowname(wtype,sname,dagname):
     wn = "python-{}-{}-{},{}".format(wtype,randomNumber,sname,dagname)
     with open("/tmux/pythonwindows_{}.txt".format(sname), 'a', encoding='utf-8') as file: 
       file.writelines("{}\n".format(wn))
-    
+
     return wn
 
+def updatesearchterms(searchtermsfile):
+    # check if search terms exist    
+    stcurr = default_args['searchterms']
+    stcurrfile = default_args['searchtermsfile']  
+    mainsearchterms=""
+  
+    if stcurr != "":
+       stcurrarr = stcurr.split("~")
+       stcurrarrfile = stcurrfile.split("~")
+       if len(stcurrarr) < len(stcurrarrfile) and len(stcurrarr)==1:
+          for i in range(len(stcurrarrfile)-1):
+            if stcurr[0]=='@' or stcurr[0]=='|':
+               stcurr = stcurr[1:]
+            stcurrarr.append(stcurr)
+            
+       if len(stcurrarr) == len(stcurrarrfile):
+           for st,stf in zip(stcurrarr,stcurrarrfile):
+             if st != "":
+                if st[0]=='@' or st[0]=='|':
+                   st=st[1:]
+                starr = st.split(",")
+                stfarr = stf.split(",")               
+                for si in starr:
+                  stfarr.append(si)
+                stfarr = set(stfarr)
+                mainsearchterms = mainsearchterms + ','.join(stfarr) + "~"
+           mainsearchterms = mainsearchterms[:-1]    
+           return mainsearchterms         
+
+    return searchtermsfile         
+
+def ingestfiles():
+    buf = default_args['localsearchtermfolder']
+    interval=int(default_args['localsearchtermfolderinterval'])
+    searchtermsfile = ""
+
+    dirbuf = buf.split(",")
+    if len(dirbuf) == 0:
+       return
+      
+    while True:  
+      lg=""
+      searchtermsfile=""
+      for dr in dirbuf:        
+         filenames = []
+         linebuf="" 
+         if dr != "":
+            if dr[0]=='@':
+              dr = dr[1:]
+              lg="@"
+            elif dr[0]=='|':
+              dr = dr[1:]
+              lg="|"
+            else:  
+              lg="|"
+
+         if os.path.isdir("/rawdata/{}".format(dr)):            
+           a = [os.path.join("/rawdata/{}".format(dr), f) for f in os.listdir("/rawdata/{}".format(dr)) if 
+           os.path.isfile(os.path.join("/rawdata/{}".format(dr), f))]
+           filenames.extend(a)
+
+         if len(filenames) > 0:
+           filenames = set(filenames)
+           
+           for fdr in filenames:            
+             with open(fdr) as f:
+              lines = [line.rstrip('\n').strip() for line in f]
+              lines = set(lines)
+              linebuf = linebuf + ','.join(lines) + ","
+
+         if linebuf != "":
+           linebuf = linebuf[:-1]
+           searchtermsfile = searchtermsfile + lg + linebuf +"~"
+      if searchtermsfile != "":    
+        searchtermsfile = searchtermsfile[:-1]    
+        searchtermsfile=updatesearchterms(searchtermsfile)
+        default_args['searchterms']=searchtermsfile
+
+      if interval==0:
+        break
+      else:  
+       time.sleep(interval)
+                    
+def startdirread():
+  if 'localsearchtermfolder' not in default_args:
+     return
+    
+  if default_args['localsearchtermfolder'] != '' and default_args['localsearchtermfolderinterval'] != '':
+    print("INFO startdirread")  
+    try:  
+      t = threading.Thread(name='child procs', target=ingestfiles)
+      t.start()
+    except Exception as e:
+      print(e)
+      
 def dopreprocessing(**context):
        sd = context['dag'].dag_id
        sname=context['ti'].xcom_pull(task_ids='step_1_solution_task_getparams',key="{}_solutionname".format(sd))
@@ -144,6 +241,9 @@ def dopreprocessing(**context):
        ti.xcom_push(key="{}_timedelay".format(sname), value="_{}".format(default_args['timedelay']))
        ti.xcom_push(key="{}_usemysql".format(sname), value="_{}".format(default_args['usemysql']))
        ti.xcom_push(key="{}_identifier".format(sname), value=default_args['identifier'])
+
+       ti.xcom_push(key="{}_localsearchtermfolder".format(sname), value=default_args['localsearchtermfolder'])
+       ti.xcom_push(key="{}_localsearchtermfolderinterval".format(sname), value="_{}".format(default_args['localsearchtermfolderinterval']))
 
        rtmsstream=default_args['rtmsstream']
        if 'step4crtmsstream' in os.environ:
@@ -192,7 +292,7 @@ def dopreprocessing(**context):
         fullpath="/{}/tml-airflow/dags/tml-solutions/{}/{}".format(repo,pname,os.path.basename(__file__))  
        else:
          fullpath="/{}/tml-airflow/dags/{}".format(repo,os.path.basename(__file__))  
-            
+
        wn = windowname('preprocess3',sname,sd)     
        subprocess.run(["tmux", "new", "-d", "-s", "{}".format(wn)])
        subprocess.run(["tmux", "send-keys", "-t", "{}".format(wn), "cd /Viper-preprocess3", "ENTER"])
@@ -228,6 +328,8 @@ if __name__ == '__main__':
         default_args['rtmsstream'] = rtmsstream
          
         tsslogging.locallogs("INFO", "STEP 4c: Preprocessing 3 started")
+
+        startdirread()
 
         while True:
           try: 
