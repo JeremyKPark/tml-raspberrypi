@@ -13312,3 +13312,4 @@ origin	https://<personal access token hidden>@github.com/jeremykpark/tml-raspber
 [INFO 2025-03-05_06:50:10] Deleting topic iot-preprocess2 in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-534a.py
 [INFO 2025-03-05_06:50:13] Deleting topic ml-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-534a.py
 [INFO 2025-03-05_06:50:16] Deleting topic prediction-data in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-534a.py
+[INFO 2025-03-05_06:50:19] Deleting topic cisco-network-privategpt in tml_system_step_2_kafka_createtopic_dag-myawesometmlsolution-534a.py
